@@ -1,0 +1,308 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
+    color: #222;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1080px;
+    margin: auto;
+}
+
+/* HEADER */
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #f5b400;
+}
+
+/* HERO */
+
+.hero {
+    background: #111;
+    color: white;
+    padding: 80px 0 90px;
+    text-align: center;
+}
+
+.hero h1 {
+    max-width: 800px;
+    margin: auto;
+    font-size: 46px;
+    line-height: 1.15;
+}
+
+.hero h1 span {
+    color: #f5b400;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 25px auto 35px;
+    font-size: 19px;
+    color: #ddd;
+}
+
+.button {
+    display: inline-block;
+    background: #f5b400;
+    color: #111;
+    padding: 17px 32px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 17px;
+    transition: 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.small-text {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 70px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #666;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* PROBLEM */
+
+.problem {
+    background: white;
+}
+
+.problem-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+.problem-content p {
+    margin-bottom: 18px;
+}
+
+/* BENEFITS */
+
+.benefits {
+    background: #f7f7f7;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #666;
+}
+
+/* METHOD */
+
+.method {
+    background: white;
+}
+
+.method-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.method-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+}
+
+.number {
+    min-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #111;
+    color: #f5b400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.method-item h3 {
+    margin-bottom: 5px;
+}
+
+.method-item p {
+    color: #666;
+}
+
+/* FOR WHO */
+
+.for-who {
+    background: #f7f7f7;
+}
+
+.for-who-box {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.for-who-box ul {
+    list-style: none;
+}
+
+.for-who-box li {
+    margin-bottom: 16px;
+    padding-left: 28px;
+    position: relative;
+}
+
+.for-who-box li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* CTA */
+
+.cta {
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.cta p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    color: #ccc;
+}
+
+/* DISCLAIMER */
+
+.disclaimer {
+    background: white;
+    padding: 35px 0;
+}
+
+.disclaimer p {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+
+/* FOOTER */
+
+footer {
+    background: #111;
+    color: #888;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 60px 0 70px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .cta h2 {
+        font-size: 29px;
+    }
+
+    .for-who-box {
+        padding: 28px;
+    }
+}
