@@ -1,13 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0f172a" />
-  <text
-    x="16.5"
-    y="24.5"
-    text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-weight="700"
-    font-size="24"
-    fill="#7dd3fc"
-  >R</text>
-  <circle cx="18.5" cy="11.3" r="2.5" fill="#ff9f1c" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Fundo com cantos arredondados -->
+  <rect width="512" height="512" rx="110" fill="#121212"/>
+  
+  <!-- Letra N (Branca) -->
+  <path d="M 110,370 L 110,142 L 175,142 L 255,275 L 255,142 L 305,142 L 305,370 L 240,370 L 160,237 L 160,370 Z" fill="#FFFFFF"/>
+  
+  <!-- Letra D (Amarela/Dourada) -->
+  <path d="M 315,142 L 385,142 C 440,142 470,175 470,256 C 470,337 440,370 385,370 L 315,370 Z M 365,190 L 365,322 L 385,322 C 410,322 420,305 420,256 C 420,207 410,190 385,190 Z" fill="#EAB308"/>
 </svg>
