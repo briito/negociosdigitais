@@ -13,19 +13,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Sticky CTA bar — appears after the hero is scrolled past
-    var stickyCta = document.getElementById("stickyCta");
-    var hero = document.querySelector(".hero");
-
-    if (stickyCta && hero) {
-        window.addEventListener("scroll", function () {
-            var heroBottom = hero.getBoundingClientRect().bottom;
-            if (heroBottom < 0) {
-                stickyCta.classList.add("visible");
-            } else {
-                stickyCta.classList.remove("visible");
-            }
-        });
-    }
 
 });
