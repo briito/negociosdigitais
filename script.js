@@ -44,39 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* ==========================================================
-   CONSENTIMENTO DE COOKIES + PIXEL DA META
+   PIXEL DA META
    ----------------------------------------------------------
-   1) Cole abaixo o ID do seu Pixel (somente números), por exemplo "123456789012345".
-   2) Enquanto o ID estiver vazio, nada é carregado e o aviso não aparece
-      na primeira visita (o link "Preferências de cookies" continua funcionando).
-   3) O Pixel só é carregado depois que o visitante clica em "Aceitar".
+   Cole abaixo o ID do seu Pixel (somente números), por exemplo "123456789012345".
+   Enquanto o ID estiver vazio, nada é carregado.
+   Sem aviso de cookies: o Pixel carrega ao abrir a página, e isso está
+   informado na Política de Privacidade e na Política de Cookies.
    ========================================================== */
 (function () {
     var META_PIXEL_ID = "";
-    var STORAGE_KEY = "nd_consent";
 
-    function getConsent() {
-        try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
-    }
-
-    function setConsent(value) {
-        try { localStorage.setItem(STORAGE_KEY, value); } catch (e) { /* ignora */ }
-    }
-
-    function deleteCookie(name) {
-        var host = location.hostname;
-        var parts = host.split(".");
-        var domains = ["", host, "." + host];
-        if (parts.length > 2) { domains.push("." + parts.slice(-3).join(".")); }
-        if (parts.length > 1) { domains.push("." + parts.slice(-2).join(".")); }
-        domains.forEach(function (d) {
-            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/" +
-                (d ? "; domain=" + d : "");
-        });
-    }
-
-    function loadPixel() {
-        if (!META_PIXEL_ID || window.fbq) { return; }
+    if (META_PIXEL_ID) {
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
@@ -93,66 +71,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (ev) {
         var link = ev.target.closest ? ev.target.closest("a[href*='pay.kiwify.com.br']") : null;
         if (link && window.fbq) { window.fbq("trackCustom", "ClickCheckout"); }
-    });
-
-    var banner = null;
-
-    function closeBanner() {
-        if (banner && banner.parentNode) { banner.parentNode.removeChild(banner); }
-        banner = null;
-    }
-
-    function accept() {
-        setConsent("granted");
-        closeBanner();
-        loadPixel();
-    }
-
-    function refuse() {
-        var hadPixel = !!window.fbq;
-        setConsent("denied");
-        closeBanner();
-        deleteCookie("_fbp");
-        deleteCookie("_fbc");
-        if (hadPixel) { location.reload(); }
-    }
-
-    function showBanner() {
-        if (banner) { return; }
-        banner = document.createElement("div");
-        banner.className = "cookie-banner";
-        banner.setAttribute("role", "dialog");
-        banner.setAttribute("aria-label", "Aviso de cookies");
-        banner.innerHTML =
-            "<p>Usamos cookies e o Pixel da Meta para medir o resultado dos nossos anúncios. " +
-            "Você pode aceitar ou recusar — a navegação e a compra funcionam normalmente nos dois casos. " +
-            "Saiba mais na <a href=\"politica-de-cookies.html\">Política de Cookies</a> e na " +
-            "<a href=\"politica-de-privacidade.html\">Política de Privacidade</a>.</p>" +
-            "<div class=\"cookie-actions\">" +
-            "<button type=\"button\" class=\"cookie-btn cookie-refuse\">Recusar</button>" +
-            "<button type=\"button\" class=\"cookie-btn cookie-accept\">Aceitar</button>" +
-            "</div>";
-        document.body.appendChild(banner);
-        banner.querySelector(".cookie-accept").addEventListener("click", accept);
-        banner.querySelector(".cookie-refuse").addEventListener("click", refuse);
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        ["cookie-settings", "cookie-settings-inline"].forEach(function (id) {
-            var el = document.getElementById(id);
-            if (el) {
-                el.addEventListener("click", function (ev) {
-                    ev.preventDefault();
-                    showBanner();
-                });
-            }
-        });
-
-        var consent = getConsent();
-        if (consent === "granted") {
-            loadPixel();
-        } else if (consent === null && META_PIXEL_ID) {
-            showBanner();
-        }
     });
 })();
